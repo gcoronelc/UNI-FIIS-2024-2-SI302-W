@@ -19,13 +19,13 @@
 
 ## Delegado
 
-- Nombre: 
-- Correo: 
+- Nombre: Luis Rodrigo Nuñez Principe
+- Correo: luis.nunez.p@uni.pe
 
 ## Subdelegado
 
-- Nombre: 
-- Correo: 
+- Nombre: Luis Abel Huanca Mendez
+- Correo: luis.huanca.m@uni.pe
 
 # RECURSOS UTILES
 
