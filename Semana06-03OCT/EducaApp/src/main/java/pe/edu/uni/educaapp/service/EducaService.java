@@ -53,4 +53,84 @@ public class EducaService {
     }
 
     
+    public MatriculaDto procMatricula(MatriculaDto bean){
+        Connection cn = null;
+        PreparedStatement pstm;
+        ResultSet rs;
+        String sql;
+        double precio;
+        String tipo;
+        int filas;
+        try {
+            // Inicio de Tx
+            cn = AccesoDB.getConnection();
+            cn.setAutoCommit(false);
+            // Validaciones
+            
+            
+            
+            
+            // Precio del curso
+            sql = "select cur_precio from  curso where cur_id=?";
+            pstm = cn.prepareStatement(sql);
+            pstm.setInt(1, bean.getIdCurso());
+            rs = pstm.executeQuery();
+            if(!rs.next()){
+                throw new SQLException("No existe el curso.");
+            }
+            precio = rs.getDouble("cur_precio");
+            rs.close();
+            pstm.close();
+            // Determinar precio final
+            tipo = bean.getTipo().toUpperCase();
+            precio = switch (tipo) {
+                case "BECA" -> 0.0;
+                case "MEDIABECA" -> precio/2;
+                default -> precio;
+            };
+            // Registrar matricula
+            sql = "insert into matricula(cur_id,alu_id,emp_id,mat_tipo,";
+            sql += "mat_fecha,mat_precio,mat_cuotas) ";
+            sql += "values(?,?,?,?,getdate(),?,?)";
+            pstm = cn.prepareStatement(sql);
+            pstm.setInt(1, bean.getIdCurso());
+            pstm.setInt(2, bean.getIdAlumno());
+            pstm.setInt(3, bean.getIdEmpleado());
+            pstm.setString(4, bean.getTipo());
+            pstm.setDouble(5, bean.getPrecio());
+            pstm.setInt(6, bean.getCuotas());
+            pstm.executeUpdate();
+            pstm.close();
+            // Incrementar los matriculados
+            sql = "update curso set cur_matriculados = cur_matriculados + 1 ";
+            sql += "where cur_id =?";
+            pstm = cn.prepareStatement(sql);
+            pstm.setInt(1, bean.getIdCurso());
+            filas = pstm.executeUpdate();
+            if(filas != 1){
+                throw new SQLException("Error en el codigo del curso.");
+            }
+            // Confirmar Tx
+            cn.commit();
+            bean.setPrecio(precio);
+        } catch (SQLException e) {
+            try {
+                cn.rollback();
+            } catch (Exception e1) {
+            }
+            throw new RuntimeException(e.getMessage());
+        } catch (Exception e) {
+            try {
+                cn.rollback();
+            } catch (Exception e1) {
+            }
+            throw new RuntimeException("Error en el proceso, intentelo nuevamente!!!");
+        } finally{
+            try {
+                cn.close();
+            } catch (Exception e) {
+            }
+        }
+        return bean;
+    }
 }
