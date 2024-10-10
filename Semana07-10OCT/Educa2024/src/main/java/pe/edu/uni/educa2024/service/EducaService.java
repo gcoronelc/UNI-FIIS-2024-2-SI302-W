@@ -89,6 +89,7 @@ public class EducaService {
 			// Confirmar la Tx
 			cn.commit();
 			bean.setPrecio(precio);
+			bean.setFecha(obtenerFecha(cn, bean));
 		} catch (SQLException e) {
 			try {
 				cn.rollback(); // Cancelar la Tx
@@ -166,7 +167,7 @@ public class EducaService {
 			pstm.close();
 			// Confirmar la Tx
 			cn.commit();
-
+			bean.setFecha(obtenerFecha(cn,bean));
 		} catch (SQLException e) {
 			try {
 				cn.rollback(); // Cancelar la Tx
@@ -289,6 +290,14 @@ public class EducaService {
 				precio;
 		};
 		return valorCuota;
+	}
+
+	private String obtenerFecha(Connection cn, PagoDto bean) {
+		return "Falta";
+	}
+
+	private String obtenerFecha(Connection cn, MatriculaDto bean) {
+		return "Falta";
 	}
 
 }

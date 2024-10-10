@@ -19,7 +19,7 @@ public class Prueba08 {
 			// Datos
 			MatriculaDto bean = new MatriculaDto();
 			bean.setIdCurso(1);
-			bean.setIdAlumno(7);
+			bean.setIdAlumno(8);
 			bean.setIdEmpleado(1);
 			bean.setTipo("MEDIABECA");
 			bean.setCuotas(1);
