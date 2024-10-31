@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "657c129d-2dac-4929-a672-340b97ba947d",
+		"name": "DemoRest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24743107"
+	},
+	"item": [
+		{
+			"name": "GETs",
+			"item": [
+				{
+					"name": "suma",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mate/suma?a=30&b=40",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mate",
+								"suma"
+							],
+							"query": [
+								{
+									"key": "a",
+									"value": "30"
+								},
+								{
+									"key": "b",
+									"value": "40"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "factorial",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mate/factorial/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mate",
+								"factorial",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "factorial-error",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mate/factorial/-5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mate",
+								"factorial",
+								"-5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
