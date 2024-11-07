@@ -1,0 +1,95 @@
+Objetivo:
+
+-llevar el control detallado y eficiente de los trabajos de reparacion que realizan.
+
+Parametros:
+
+-Seguimiento de cada trabajo de reparacion realizado
+-costo de mano de obra por cada reparacion
+-tecnicos responsables de la reparacion
+-costo total de cada reparacion, incluyendo los items utilizados (piezas, componentes, materiales)
+
+
+TABLAS:
+-CLIENTE (si es nuevo o se actualiza)
+"se registran sus datos"
+-
+
+EQUIPO
+-se registra la computadora, detallando el problema registrado por el cliente
+-se registran las caracteristricas del equipo 
+(marca, modelo, número de serie).
+
+-ADELANTO
+-se le da una fecha estimada de recojo de la computadora. Se entrega un comprobante de recepcion al cliente, que incluye el adelanto recibido y fecha de 
+entrega
+
+-EMPLEADO (tecnico)
+
+-se registran las acciones a realizar, el tiempo estimando de obra , los items (piezas y materiales) necesarios para la reparacion. 
+-Se actualiza el costo de mano de obra y se añaden los costos de los items utilizados. EL estado de la reparacion se actualiza en el sistem(proceso, reparado, listo para entregar)
+
+-RECIBO
+
+- Se calcula el costo total de reparación, 
+TOTAL = Mano_obra + items_utilizados;
+SALDO PENDIENTE = TOTAL-adelanto 
+
+Se notifica al cliente que su computadora
+esta lista para ser recogida, al recoger el pedidido paga el saldo pendiente. Se genera y entrega un recibo final que detalla el costo total, el adelanto y el pago final. Se entrega la computadora
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
