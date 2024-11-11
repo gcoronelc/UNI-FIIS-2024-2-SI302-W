@@ -10,7 +10,7 @@
 			"name": "POST",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Nuevo Cliente",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -31,6 +31,55 @@
 								"11",
 								"6",
 								"8"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error longitud DNI",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paterno\": \"González\",\r\n    \"materno\": \"López\",\r\n    \"nombre\": \"Juan\",\r\n    \"dni\": \"123456789012345\",\r\n    \"ciudad\": \"Lima\",\r\n    \"direccion\": \"Av. Principal 123\",\r\n    \"telefono\": \"987654321\",\r\n    \"email\": \"juan.gonzalez@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error DNI",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
 							],
 							"port": "8080",
 							"path": [
