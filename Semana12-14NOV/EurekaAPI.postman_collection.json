@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "eecd64bc-7f1b-4c94-a0d6-eaae3d787545",
+		"name": "EurekaAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24743107"
+	},
+	"item": [
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "Nuevo Cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paterno\": \"González\",\r\n    \"materno\": \"López\",\r\n    \"nombre\": \"Juan\",\r\n    \"dni\": \"12345678\",\r\n    \"ciudad\": \"Lima\",\r\n    \"direccion\": \"Av. Principal 123\",\r\n    \"telefono\": \"987654321\",\r\n    \"email\": \"juan.gonzalez@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.11.6.8:8080/api/clientes",
+							"protocol": "http",
+							"host": [
+								"10",
+								"11",
+								"6",
+								"8"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error longitud DNI",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paterno\": \"González\",\r\n    \"materno\": \"López\",\r\n    \"nombre\": \"Juan\",\r\n    \"dni\": \"123456789012345\",\r\n    \"ciudad\": \"Lima\",\r\n    \"direccion\": \"Av. Principal 123\",\r\n    \"telefono\": \"987654321\",\r\n    \"email\": \"juan.gonzalez@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error DNI",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transferencia",
+			"item": [
+				{
+					"name": "No Existen cuentas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cuentaOrigen\":\"ABCD0001\",\r\n    \"cuentaDestino\":\"ABCD0002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cuentas/transferencia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cuentas",
+								"transferencia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "No Existen cuentas Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cuentaOrigen\":\"ABCD0001\",\r\n    \"cuentaDestino\":\"ABCD0002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cuentas/transferencia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cuentas",
+								"transferencia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Misma moneda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cuentaOrigen\":\"00100001\",\r\n    \"cuentaDestino\":\"00100002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cuentas/transferencia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cuentas",
+								"transferencia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Datos ok",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cuentaOrigen\":\"00100001\",\r\n    \"cuentaDestino\":\"00400001\",\r\n    \"importe\": 1000.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cuentas/transferencia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cuentas",
+								"transferencia"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
