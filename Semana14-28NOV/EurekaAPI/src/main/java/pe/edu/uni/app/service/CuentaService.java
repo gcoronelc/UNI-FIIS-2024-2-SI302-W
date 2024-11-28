@@ -1,12 +1,13 @@
 package pe.edu.uni.app.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.fasterxml.jackson.databind.deser.ContextualDeserializer;
 
 import pe.edu.uni.app.dto.TransferenciaDto;
 
@@ -15,6 +16,18 @@ public class CuentaService {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	public List<Map<String,Object>> consultaMovimientos(String cuenta){
+		String sql = """
+			select int_movinumero nro, dtt_movifecha fecha, 
+			chr_tipocodigo tipo, dec_moviimporte importe
+			from Movimiento
+			where chr_cuencodigo = ?
+		""";
+		List<Map<String,Object>> lista;
+		lista = jdbcTemplate.queryForList(sql, cuenta);
+		return lista;
+	}
 	
 	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
 	public TransferenciaDto transferencia(TransferenciaDto bean) {

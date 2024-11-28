@@ -64,6 +64,10 @@
             contentType: 'application/json',
             dataType: 'json',
             success: function(data) {
+                console.log(data);
+                localStorage.setItem("userEmpCodigo",data.codigo);
+                localStorage.setItem("userEmpNombre",data.nombre);
+
                 window.location.href = 'main.html';
             },
             error: function(xhr, status, error) {
